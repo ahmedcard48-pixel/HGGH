@@ -44,110 +44,60 @@ export default function LandingPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
-          <div className="container mx-auto px-4 text-center">
+        <section className="relative min-h-[85vh] flex items-center pt-32 pb-24 overflow-hidden bg-slate-900">
+          {/* Main Hero Image Background */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="/hero_storefront.png" 
+              alt="ECONOMINE Storefront" 
+              className="w-full h-full object-cover animate-subtle-zoom opacity-60"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-slate-900/40"></div>
+          </div>
+
+          <div className="container mx-auto px-4 text-center relative z-10">
             <div className="max-w-4xl mx-auto space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md px-4 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-6 shadow-sm"
+                className="inline-flex items-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-1.5 text-sm font-semibold text-white mb-6 shadow-xl"
               >
                 <span className={`flex h-2 w-2 rounded-full ${isRTL ? 'me-2' : 'ml-2'}`} style={{ backgroundColor: primaryColorHex }}></span>
                 {t.heroBadge}
               </motion.div>
-
-              <motion.h1
+              
+              <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]"
+                className="text-5xl md:text-8xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-2xl"
               >
                 {t.heroTitle}
               </motion.h1>
-
-              <motion.p
+              
+              <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed"
+                className="text-xl md:text-2xl text-slate-100 max-w-2xl mx-auto leading-relaxed drop-shadow-lg"
               >
                 {t.heroDesc}
               </motion.p>
-
-              <motion.div
+              
+              <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 className="flex flex-col sm:flex-row justify-center gap-4 pt-6"
               >
-                <Button size="lg" className="h-14 px-8 text-lg rounded-full text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all" style={{ backgroundColor: primaryColorHex }} asChild>
+                <Button size="lg" className="h-14 px-8 text-lg rounded-full text-white shadow-xl transition-all hover:scale-105" style={{ backgroundColor: primaryColorHex }} asChild>
                   <Link to="/register">
                     {t.startJourneyBtn} <ArrowLeft className={`${isRTL ? 'ms-2' : 'mr-2'} h-5 w-5 ${!isRTL && 'rotate-180'}`} />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 backdrop-blur-sm bg-white/50 dark:bg-slate-900/30 transition-all" asChild>
+                <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-white/30 hover:bg-white/10 text-white backdrop-blur-md transition-all hover:scale-105" asChild>
                   <Link to="/pricing">{t.viewPricing}</Link>
                 </Button>
-              </motion.div>
-
-              {/* Hero Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="mt-16 relative max-w-6xl mx-auto px-4 sm:px-6"
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-amber-500/10 rounded-[2.5rem] -rotate-1 blur-2xl"></div>
-                <div className="relative bg-white dark:bg-slate-900 p-2 sm:p-3 rounded-[2.5rem] shadow-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden backdrop-blur-sm group">
-
-                  {/* Fallback pattern underneath */}
-                  <div className="absolute inset-3 rounded-[2rem] bg-slate-50 dark:bg-slate-800 -z-10 flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-                    <span className="text-slate-400 dark:text-slate-500 text-sm font-medium">{t.heroBadge || 'ECONOMINE'}</span>
-                  </div>
-
-                  <div className="relative group/image">
-                    {/* Placeholder designed to look good if image isn't loaded */}
-                    <div className="w-full min-h-[300px] sm:min-h-[400px] max-h-[600px] rounded-[2rem] bg-gradient-to-br from-indigo-100 to-amber-50 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center p-8 border border-white/20">
-                      <div className="text-center space-y-4">
-                        <div className="mx-auto w-16 h-16 bg-white/50 dark:bg-slate-700/50 rounded-full flex items-center justify-center">
-                          <Briefcase className="h-8 w-8 text-indigo-400" />
-                        </div>
-                        <p className="text-slate-500 font-medium">Storefront Visual Placeholder</p>
-                      </div>
-                    </div>
-
-                    {/* The actual image loads on top */}
-                    <img
-                      src="/hero_storefront.png"
-                      alt="ECONOMINE Storefront"
-                      className="absolute inset-0 w-full h-full rounded-[2rem] object-cover transition-opacity duration-1000 opacity-0 animate-subtle-zoom"
-                      onLoad={(e) => {
-                        e.currentTarget.style.opacity = '1';
-                      }}
-                    />
-                  </div>
-
-                  {/* Subtle Overlays */}
-                  <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-80 pointer-events-none"></div>
-
-                  {/* Floating Elements Over the Image */}
-                  <div className="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row justify-between items-end gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none hidden sm:flex">
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Star className="text-amber-400 h-4 w-4 fill-amber-400" />
-                        <Star className="text-amber-400 h-4 w-4 fill-amber-400" />
-                        <Star className="text-amber-400 h-4 w-4 fill-amber-400" />
-                        <Star className="text-amber-400 h-4 w-4 fill-amber-400" />
-                        <Star className="text-amber-400 h-4 w-4 fill-amber-400" />
-                      </div>
-                      <p className="text-sm font-medium">Top Rated Projects</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full text-white font-bold tracking-wide">
-                      Market Ready
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             </div>
           </div>
